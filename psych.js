@@ -1,6 +1,10 @@
 var clicktype = 'click';
 if (document.ontouchstart) clicktype = 'touchstart';
 
+var test_div = document.createElement('div');
+test_div.innerHTML = ''+clicktype;
+document.getElementsByTagName('body')[0].appendChild(test_div);
+
 ////
 // Utils
 //
