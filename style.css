@@ -28,12 +28,12 @@ thead {
 .cenblk {
   display: block;
   margin: 10% auto;
-  width: 50%;
+  width: 70%;
   padding: 5%;
 }
 
 .centxt {
-  padding: 10%;
+  padding: 5%;
   text-align: center;
   line-height: 120%;
   font-size: 200%;
@@ -59,7 +59,7 @@ thead {
 #testbed { display: none; }
 
 #answers span {
-  margin: 15px;
-  padding: 10px;
+  margin: 2%;
+  padding: 2%;
 }
 
