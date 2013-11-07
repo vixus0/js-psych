@@ -1,3 +1,6 @@
+var clicktype = 'click';
+if (document.ontouchstart) clicktype = 'touchstart';
+
 ////
 // Utils
 //
@@ -107,7 +110,7 @@ function MathQSet(timer, numq) {
       a.appendChild( document.createElement('span') );
       a.lastElementChild.className = 'button';
       a.lastElementChild.answer_id = i;
-      a.lastElementChild.addEventListener('click', function(){self.answerQuestion(this)}, false);;
+      a.lastElementChild.addEventListener(clicktype, function(){self.answerQuestion(this)}, false);;
       if (i === correctChoice) {
         a.lastElementChild.innerHTML = ""+answer;
         choices.push(answer);
@@ -187,4 +190,4 @@ function startTest() {
   qSet.init(divTest);
 }
 
-getId('start_test').addEventListener('click', startTest, false);
+getId('start_test').addEventListener(clicktype, startTest, false);
