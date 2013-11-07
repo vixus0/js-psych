@@ -1,0 +1,60 @@
+body {
+  background-color: #5577ee;
+  font-family: sans-serif;
+  color: #ffffff;
+  font-size: 50px;
+}
+
+input, select {
+  border: 3px solid #000000;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 50px;
+  border-radius: 20px;
+}
+
+table {
+  font-size: 20px;
+  width: 100%;
+  line-height: 110%;
+}
+
+thead {
+  background-color: #ffffff;
+  color: #5577ee;
+  font-weight: bold;
+}
+
+.cenblk {
+  display: block;
+  margin: 20px auto;
+  width: 25%;
+  padding: 10px;
+}
+
+.button {
+  border: 3px outset #3355cc;
+  background: #3355cc;
+  text-decoration: none;
+  line-height: 100%;
+  border-radius: 20px;
+}
+
+.button:hover {
+  box-shadow: 3px 3px 5px 0 #3355cc;
+  cursor: pointer;
+}
+
+.centxt {
+  padding: 50px;
+  text-align: center;
+  line-height: 220%;
+}
+
+#testbed { display: none; }
+
+#answers span {
+  margin: 15px;
+  padding: 10px;
+}
+
