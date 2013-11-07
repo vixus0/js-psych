@@ -97,7 +97,7 @@ function MathQSet(timer, numq) {
     var q = this.q_div;
     var a = this.a_div;
     
-    q.innerHTML = (this.curQ) + "/" + this.numQ + ": " + numA + " + " + numB + " = ?";
+    q.innerHTML = "Question "+this.curQ+"<br><br>" + numA + " + " + numB + " = ?";
     a.innerHTML = "";
 
     var choices = [];

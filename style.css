@@ -2,19 +2,19 @@ body {
   background-color: #5577ee;
   font-family: sans-serif;
   color: #ffffff;
-  font-size: 50px;
+  font-size: 100%;
 }
 
 input, select {
   border: 3px solid #000000;
   background-color: #ffffff;
   color: #000000;
-  font-size: 50px;
+  font-size: 100%;
   border-radius: 20px;
 }
 
 table {
-  font-size: 20px;
+  font-size: 40%;
   width: 100%;
   line-height: 110%;
 }
@@ -27,13 +27,20 @@ thead {
 
 .cenblk {
   display: block;
-  margin: 20px auto;
-  width: 25%;
-  padding: 10px;
+  margin: 10% auto;
+  width: 50%;
+  padding: 5%;
+}
+
+.centxt {
+  padding: 10%;
+  text-align: center;
+  line-height: 120%;
+  font-size: 300%;
 }
 
 .button {
-  border: 3px outset #3355cc;
+  border: 5px outset #3355cc;
   background: #3355cc;
   text-decoration: none;
   line-height: 100%;
@@ -45,10 +52,8 @@ thead {
   cursor: pointer;
 }
 
-.centxt {
-  padding: 50px;
-  text-align: center;
-  line-height: 220%;
+.button:active {
+  background-color: #33aadd;
 }
 
 #testbed { display: none; }
