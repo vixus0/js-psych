@@ -141,8 +141,6 @@ function MathQSet(timer, numq) {
     this.a_div = document.createElement('div');
     this.q_div.id = "question";
     this.a_div.id = "answers";
-    this.q_div.className = "centxt";
-    this.a_div.className = "centxt";
 
     out_div.appendChild(this.q_div);
     out_div.appendChild(this.a_div);
