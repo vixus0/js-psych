@@ -1,10 +1,6 @@
 var clicktype = 'click';
 if (document.ontouchstart) clicktype = 'touchstart';
 
-var test_div = document.createElement('div');
-test_div.innerHTML = ''+clicktype;
-document.getElementsByTagName('body')[0].appendChild(test_div);
-
 ////
 // Utils
 //
@@ -165,14 +161,14 @@ function startTest() {
   var testType = getId('test_type').value;
 
   // Timestamping
-  if (window.performance.now) {
-    getTime = function() { return window.performance.now(); };
-  } else{
-    if (window.performance.webkitNow) {
-      getTime = function() { return window.performance.webkitNow(); };
-    } else {
-      getTime = function() { return new Date().getTime(); };
-    }
+  if (window.performance) {
+    if (window.performance.now) {
+      getTime = function() { return window.performance.now(); };
+    } else if (window.performance.webkitNow) {
+        getTime = function() { return window.performance.webkitNow(); };
+    } 
+  } else {
+    getTime = function() { return new Date().getTime(); };
   }
 
   // Init
