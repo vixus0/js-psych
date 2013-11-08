@@ -2,21 +2,23 @@ body {
   background-color: #5577ee;
   font-family: sans-serif;
   color: #ffffff;
-  font-size: 100%;
+  text-align: center;
+  font-size: 30px;
 }
 
 input, select {
   border: 3px solid #000000;
   background-color: #ffffff;
   color: #000000;
-  font-size: 100%;
   border-radius: 20px;
+  margin: 20px auto;
+  font-size: 30px;
+  text-align: center;
+  width: 30%;
 }
 
 table {
-  font-size: 40%;
   width: 100%;
-  line-height: 110%;
 }
 
 thead {
@@ -25,25 +27,10 @@ thead {
   font-weight: bold;
 }
 
-.cenblk {
-  display: block;
-  margin: 10% auto;
-  width: 70%;
-  padding: 5%;
-}
-
-.centxt {
-  padding: 5%;
-  text-align: center;
-  line-height: 120%;
-  font-size: 200%;
-}
-
 .button {
   border: 5px outset #3355cc;
   background: #3355cc;
   text-decoration: none;
-  line-height: 100%;
   border-radius: 20px;
 }
 
@@ -56,10 +43,15 @@ thead {
   background-color: #33aadd;
 }
 
+.block { display: block; }
+
 #testbed { display: none; }
 
-#answers span {
-  margin: 2%;
-  padding: 2%;
+#answers {
+  padding: 50px;
 }
 
+#answers span {
+  margin: 15px;
+  padding: 10px;
+}
