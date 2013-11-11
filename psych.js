@@ -26,22 +26,22 @@ function randInts(n, a, b, init) {
 }
 
 function Results(cols) {
-  this.cols = cols;
-  this.list = [];
+  var cols = cols;
+  var list = [];
 
   this.addResult = function(result) {
-    if (result.length == this.cols.length) {
+    if (result.length == cols.length) {
       var res = new Object();
-      for (var i=0; i<this.cols.length; i++) {
-        res[this.cols[i]] = result[i];
+      for (var i=0; i<cols.length; i++) {
+        res[cols[i]] = result[i];
       }
-      this.list.push(res);
+      list.push(res);
     }
   };
 
   this.renderHTML = function() {
-    var len = this.list.length;
-    var nc = this.cols.length;
+    var len = list.length;
+    var nc = cols.length;
 
     out = "<table><thead><tr><td>#</td>";
     for (var i=0; i<nc; i++) {
@@ -50,8 +50,8 @@ function Results(cols) {
     out += "</tr></thead><tbody>";
     for (var i=0; i<len; i++) {
       out += "<tr><td>"+(i+1)+"</td>";
-      for (var j in this.list[i]) {
-        out += "<td>"+this.list[i][j]+"</td>";
+      for (var j in list[i]) {
+        out += "<td>"+list[i][j]+"</td>";
       }
       out += "</tr>";
     }
@@ -70,21 +70,23 @@ function MathQSet(timer, numq) {
   var nChoices = 4;
   var maxNum = 10;
 
-  this.timer = timer;
-  this.numQ = numq;
-  this.curQ = 1;
+  var timer = timer;
+  var numQ = numq;
+  var curQ = 1;
 
-  this.resCols = ['NumA', 'NumB', 'Choices', 'Correct', 'Chose', 'Response'];
-  this.results = new Results(this.resCols);
-  this.lastres = [];
+  var resCols = ['NumA', 'NumB', 'Choices', 'Correct', 'Chose', 'Response'];
+  var results = new Results(resCols);
+  var lastres = [];
+
+  var q_div, a_div;
 
   this.answerQuestion = function(choice) {
-    this.lastres[4] = choice.answer_id + 1;
-    this.lastres[5] = (this.timer() - this.lastres[5]).toFixed(2);
-    this.results.addResult(this.lastres);
-    if (this.curQ < this.numQ) {
+    lastres[4] = choice.answer_id + 1;
+    lastres[5] = (timer() - lastres[5]).toFixed(2);
+    results.addResult(lastres);
+    if (curQ < numQ) {
       self.nextQuestion();
-      this.curQ++;
+      curQ++;
     } else {
       this.showResults();
     } 
@@ -97,49 +99,45 @@ function MathQSet(timer, numq) {
 
     var correctChoice = randInt(0,nChoices-1);
 
-    var q = this.q_div;
-    var a = this.a_div;
-    
-    q.innerHTML = "Question "+this.curQ+"<br><br>" + numA + " + " + numB + " = ?";
-    a.innerHTML = "";
+    q_div.innerHTML = "Question "+curQ+"<br><br>" + numA + " + " + numB + " = ?";
+    a_div.innerHTML = "";
 
     var choices = [];
     var rlist = randInts(nChoices, 1, maxNum*2, answer);
 
     for (var i=0; i<nChoices; i++) {
-      a.appendChild( document.createElement('span') );
-      a.lastElementChild.className = 'button';
-      a.lastElementChild.answer_id = i;
-      a.lastElementChild.addEventListener(clicktype, function(){self.answerQuestion(this)}, false);;
+      a_div.appendChild( document.createElement('span') );
+      var last = a_div.lastElementChild;
+      last.className = 'button';
+      last.answer_id = i;
+      last.addEventListener(clicktype, function(){self.answerQuestion(this)}, false);;
       if (i === correctChoice) {
-        a.lastElementChild.innerHTML = ""+answer;
+        last.innerHTML = ""+answer;
         choices.push(answer);
       } else {
         var thisChoice = rlist.pop();
-        a.lastElementChild.innerHTML = ""+thisChoice;
+        last.innerHTML = ""+thisChoice;
         choices.push(thisChoice);
       }
     }
 
-    this.lastres = [numA, numB, choices, correctChoice+1, null, this.timer()];
+    lastres = [numA, numB, choices, correctChoice+1, null, timer()];
   };
 
   this.showResults = function() {
-    var q = this.q_div;
-    var a = this.a_div;
-    a.innerHTML = "";
-    q.innerHTML = "<p>Test complete.</p><p>";
-    q.innerHTML += this.results.renderHTML();
+    a_div.innerHTML = "";
+    q_div.innerHTML = "<p>Test complete.</p><p>";
+    q_div.innerHTML += results.renderHTML();
   };
 
   this.init = function(out_div) {
-    this.q_div = document.createElement('div');
-    this.a_div = document.createElement('div');
-    this.q_div.id = "question";
-    this.a_div.id = "answers";
+    q_div = document.createElement('div');
+    a_div = document.createElement('div');
+    q_div.id = "question";
+    a_div.id = "answers";
 
-    out_div.appendChild(this.q_div);
-    out_div.appendChild(this.a_div);
+    out_div.appendChild(q_div);
+    out_div.appendChild(a_div);
     out_div.style.display = 'block';
 
     self.nextQuestion();
